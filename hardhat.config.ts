@@ -28,6 +28,7 @@ const chainIds = {
   goerli: 5,
   hardhat: 31337,
   mainnet: 1,
+  bscTest: 97,
   "optimism-mainnet": 10,
   "polygon-mainnet": 137,
   "polygon-mumbai": 80001,
@@ -41,6 +42,9 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
       break;
     case "bsc":
       jsonRpcUrl = "https://bsc-dataseed1.binance.org";
+      break;
+    case "bscTest":
+      jsonRpcUrl = "https://data-seed-prebsc-1-s1.binance.org:8545";
       break;
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
@@ -86,6 +90,7 @@ const config: HardhatUserConfig = {
     arbitrum: getChainConfig("arbitrum-mainnet"),
     avalanche: getChainConfig("avalanche"),
     bsc: getChainConfig("bsc"),
+    bscTest: getChainConfig("bscTest"),
     goerli: getChainConfig("goerli"),
     mainnet: getChainConfig("mainnet"),
     optimism: getChainConfig("optimism-mainnet"),
